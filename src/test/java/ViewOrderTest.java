@@ -78,5 +78,29 @@ public class ViewOrderTest {
         driver.quit();
     }
 
+    @Test
+    @DisplayName("test_view_orders_details")
+    void test_view_orders_details(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200");
+        driver.manage().window().maximize();
+
+        String method = testInfo.getDisplayName();
+        createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
+
+        WebElement viewOrdersBtn = driver.findElement(By.xpath("//a[@name='view-orders']"));
+        viewOrdersBtn.click();
+
+        WebElement viewOrdersDetailsBtn = driver.findElement(By.xpath("//td[@name='view-order-details']"));
+        viewOrdersDetailsBtn.click();
+
+        try{
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+        driver.quit();
+    }
+
 
 }
