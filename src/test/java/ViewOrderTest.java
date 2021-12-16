@@ -37,12 +37,12 @@ public class ViewOrderTest {
     }
 
     @Test
-    @DisplayName("test_facebook_logo")
-    void test_fb_logo(TestInfo testInfo) throws Exception{
-        driver.get("https://www.youtube.com");
+    @DisplayName("test_wci_logo")
+    void test_wci_logo(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200");
         driver.manage().window().maximize();
 
-        WebElement fbLogo = driver.findElement(By.className("yt-icon"));
+        WebElement fbLogo = driver.findElement(By.className("wci-logo"));
 
         String method = testInfo.getDisplayName();
         createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
@@ -57,4 +57,6 @@ public class ViewOrderTest {
         }
         driver.quit();
     }
+
+
 }
