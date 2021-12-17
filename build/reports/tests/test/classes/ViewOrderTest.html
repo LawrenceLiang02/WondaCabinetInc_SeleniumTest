@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">4</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">3.293s</div>
+<div class="counter">15.585s</div>
 <p>duration</p>
 </div>
 </td>
@@ -82,9 +82,27 @@
 </tr>
 </thead>
 <tr>
+<td class="success">test_add_order</td>
+<td class="success">test_add_order(TestInfo)</td>
+<td class="success">3.338s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">test_view_orders</td>
+<td class="success">test_view_orders(TestInfo)</td>
+<td class="success">2.691s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
 <td class="success">test_view_orders_details</td>
 <td class="success">test_view_orders_details(TestInfo)</td>
-<td class="success">3.293s</td>
+<td class="success">2.656s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">test_wci_logo</td>
+<td class="success">test_wci_logo(TestInfo)</td>
+<td class="success">6.900s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -92,29 +110,43 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>17:02:29.284 [Test worker] DEBUG io.github.bonigarcia.wdm.cache.ResolutionCache - Removing resolution chrome=96 from cache (expired on Thu Dec 16 16:30:51 EST 2021)
-17:02:29.293 [Test worker] DEBUG io.github.bonigarcia.wdm.versions.Shell - Running command on the shell: [wmic.exe, datafile, where, name='C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe', get, Version, /value]
-17:02:29.407 [Test worker] DEBUG io.github.bonigarcia.wdm.versions.Shell - Result: 
-17:02:29.407 [Test worker] DEBUG io.github.bonigarcia.wdm.versions.Shell - Running command on the shell: [wmic.exe, datafile, where, name='C:\\Users\\kenny\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe', get, Version, /value]
-17:02:29.490 [Test worker] DEBUG io.github.bonigarcia.wdm.versions.Shell - Result: 
-17:02:29.490 [Test worker] DEBUG io.github.bonigarcia.wdm.versions.Shell - Running command on the shell: [wmic.exe, datafile, where, name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', get, Version, /value]
-17:02:29.578 [Test worker] DEBUG io.github.bonigarcia.wdm.versions.Shell - Result: Version=96.0.4664.110
-17:02:29.580 [Test worker] DEBUG io.github.bonigarcia.wdm.cache.ResolutionCache - Resolution chrome96=96.0.4664.45 in cache (valid until 15:30:51 17/12/2021 EST)
-17:02:29.580 [Test worker] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 96.0.4664.45 (resolved driver for Chrome 96)
-17:02:29.581 [Test worker] DEBUG io.github.bonigarcia.wdm.cache.ResolutionCache - Storing resolution chrome=96 in cache (valid until 18:02:29 16/12/2021 EST)
-17:02:29.595 [Test worker] DEBUG io.github.bonigarcia.wdm.WebDriverManager - Driver chromedriver 96.0.4664.45 found in cache
-17:02:29.596 [Test worker] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\kenny\.cache\selenium\chromedriver\win32\96.0.4664.45\chromedriver.exe
+<pre>12:45:47.075 [Test worker] DEBUG io.github.bonigarcia.wdm.cache.ResolutionCache - Removing resolution chrome=96 from cache (expired on Fri Dec 17 12:31:22 EST 2021)
+12:45:47.089 [Test worker] DEBUG io.github.bonigarcia.wdm.versions.Shell - Running command on the shell: [wmic.exe, datafile, where, name='C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe', get, Version, /value]
+12:45:47.221 [Test worker] DEBUG io.github.bonigarcia.wdm.versions.Shell - Result: Version=96.0.4664.110
+12:45:47.222 [Test worker] DEBUG io.github.bonigarcia.wdm.cache.ResolutionCache - Resolution chrome96=96.0.4664.45 in cache (valid until 17:33:05 17/12/2021 EST)
+12:45:47.222 [Test worker] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 96.0.4664.45 (resolved driver for Chrome 96)
+12:45:47.223 [Test worker] DEBUG io.github.bonigarcia.wdm.cache.ResolutionCache - Storing resolution chrome=96 in cache (valid until 13:45:47 17/12/2021 EST)
+12:45:47.242 [Test worker] DEBUG io.github.bonigarcia.wdm.WebDriverManager - Driver chromedriver 96.0.4664.45 found in cache
+12:45:47.243 [Test worker] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\vpopa\.cache\selenium\chromedriver\win32\96.0.4664.45\chromedriver.exe
 </pre>
 </span>
 </div>
 <div id="tab2" class="tab">
 <h2>Standard error</h2>
 <span class="code">
-<pre>Starting ChromeDriver 96.0.4664.45 (76e4c1bb2ab4671b8beba3444e61c0f17584b2fc-refs/branch-heads/4664@{#947}) on port 1197
+<pre>Starting ChromeDriver 96.0.4664.45 (76e4c1bb2ab4671b8beba3444e61c0f17584b2fc-refs/branch-heads/4664@{#947}) on port 3938
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-Dec 16, 2021 5:02:32 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+Dec. 17, 2021 12:45:49 P.M. org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+Starting ChromeDriver 96.0.4664.45 (76e4c1bb2ab4671b8beba3444e61c0f17584b2fc-refs/branch-heads/4664@{#947}) on port 44083
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Dec. 17, 2021 12:45:53 P.M. org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+Starting ChromeDriver 96.0.4664.45 (76e4c1bb2ab4671b8beba3444e61c0f17584b2fc-refs/branch-heads/4664@{#947}) on port 5927
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Dec. 17, 2021 12:45:58 P.M. org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+Starting ChromeDriver 96.0.4664.45 (76e4c1bb2ab4671b8beba3444e61c0f17584b2fc-refs/branch-heads/4664@{#947}) on port 28768
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Dec. 17, 2021 12:46:06 P.M. org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 </pre>
 </span>
@@ -127,7 +159,7 @@ INFO: Detected dialect: W3C
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.1</a> at Dec 16, 2021, 5:02:35 PM</p>
+<a href="http://www.gradle.org">Gradle 7.1</a> at Dec. 17, 2021, 12:46:09 p.m.</p>
 </div>
 </div>
 </body>

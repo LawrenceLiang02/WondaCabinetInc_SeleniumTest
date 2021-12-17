@@ -8,6 +8,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.Select;
 
 import java.io.File;
 
@@ -100,6 +101,59 @@ public class ViewOrderTest {
             e.printStackTrace();
         }
         driver.quit();
+    }
+
+    @Test
+    @DisplayName("test_add_order")
+    void test_add_order(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200");
+        driver.manage().window().maximize();
+
+        String method = testInfo.getDisplayName();
+        createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
+
+        WebElement addOrdersBtn = driver.findElement(By.xpath("//a[@name='add-orders']"));
+        addOrdersBtn.click();
+
+        WebElement idField = driver.findElement(By.xpath("//input[@name='orderId']"));
+        idField.sendKeys("30");
+
+        WebElement tnField = driver.findElement(By.xpath("//input[@name='trackingNo']"));
+        tnField.sendKeys("887755");
+
+        WebElement osField = driver.findElement(By.xpath("//input[@name='orderStatus']"));
+        osField.sendKeys("Received");
+
+        WebElement dField = driver.findElement(By.xpath("//input[@name='design']"));
+        dField.sendKeys("Design");
+
+        WebElement ctField = driver.findElement(By.xpath("//input[@name='cabinetType']"));
+        ctField.sendKeys("Kitchen Cabinet");
+
+        WebElement clField = driver.findElement(By.xpath("//input[@name='color']"));
+        clField.sendKeys("Black");
+
+        Select mField = new Select(driver.findElement(By.xpath("//select[@name='material']")));
+        mField.selectByVisibleText("Oak");
+
+        Select hField = new Select(driver.findElement(By.xpath("//select[@name='handleType']")));
+        hField.selectByVisibleText("Square");
+
+        WebElement iField = driver.findElement(By.xpath("//textarea[@name='additional_items']"));
+        iField.sendKeys("Black");
+
+        WebElement submitBtn = driver.findElement(By.xpath("//button[@name='submit']"));
+        submitBtn.click();
+
+        try{
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+        driver.quit();
+
+
     }
 
 
