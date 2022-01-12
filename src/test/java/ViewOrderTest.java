@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
+import org.springframework.util.Assert;
 
 import java.io.File;
 
@@ -154,6 +155,42 @@ public class ViewOrderTest {
         driver.quit();
 
 
+    }
+
+    @Test
+    @DisplayName("test_update_order")
+    void test_update_order(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200");
+        driver.manage().window().maximize();
+
+        String method = testInfo.getDisplayName();
+        createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
+
+        WebElement viewBtn = driver.findElement(By.xpath("//a[@name='view-orders']"));
+        viewBtn.click();
+
+        WebElement updateBtn = driver.findElement(By.xpath("//td[@name='update-orders']"));
+        updateBtn.click();
+
+        WebElement statusField = driver.findElement(By.xpath("//input[@name='orderStatus']"));
+        statusField.clear();
+        statusField.sendKeys("In Progress");
+
+        WebElement submitBtn = driver.findElement(By.xpath("//button[@name='submit']"));
+        submitBtn.click();
+
+        WebElement valueStatus = driver.findElement(By.xpath("//td[@name='status']"));
+
+        assertThat(valueStatus.getText(), is("In Progress"));
+
+
+        try{
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+        driver.quit();
     }
 
 
