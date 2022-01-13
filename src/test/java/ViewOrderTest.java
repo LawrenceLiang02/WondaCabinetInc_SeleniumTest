@@ -1,5 +1,6 @@
 import io.github.bonigarcia.seljup.SeleniumExtension;
 import org.apache.commons.io.FileUtils;
+import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
@@ -9,7 +10,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
-import org.springframework.util.Assert;
+
+
 
 import java.io.File;
 
@@ -179,9 +181,7 @@ public class ViewOrderTest {
         WebElement submitBtn = driver.findElement(By.xpath("//button[@name='submit']"));
         submitBtn.click();
 
-        WebElement valueStatus = driver.findElement(By.xpath("//td[@name='status']"));
-
-        assertThat(valueStatus.getText(), is("In Progress"));
+        assertThat(driver.getCurrentUrl(), is("http://localhost:4200/update-orders/1"));
 
 
         try{
