@@ -1,5 +1,6 @@
 import io.github.bonigarcia.seljup.SeleniumExtension;
 import org.apache.commons.io.FileUtils;
+import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
@@ -9,6 +10,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
+
+
 
 import java.io.File;
 
@@ -154,6 +157,40 @@ public class ViewOrderTest {
         driver.quit();
 
 
+    }
+
+    @Test
+    @DisplayName("test_update_order")
+    void test_update_order(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200");
+        driver.manage().window().maximize();
+
+        String method = testInfo.getDisplayName();
+        createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
+
+        WebElement viewBtn = driver.findElement(By.xpath("//a[@name='view-orders']"));
+        viewBtn.click();
+
+        WebElement updateBtn = driver.findElement(By.xpath("//td[@name='update-orders']"));
+        updateBtn.click();
+
+        WebElement statusField = driver.findElement(By.xpath("//input[@name='orderStatus']"));
+        statusField.clear();
+        statusField.sendKeys("In Progress");
+
+        WebElement submitBtn = driver.findElement(By.xpath("//button[@name='submit']"));
+        submitBtn.click();
+
+        assertThat(driver.getCurrentUrl(), is("http://localhost:4200/update-orders/1"));
+
+
+        try{
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+        driver.quit();
     }
 
 

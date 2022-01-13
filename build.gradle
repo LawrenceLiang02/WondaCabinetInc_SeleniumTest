@@ -19,6 +19,7 @@ dependencies {
     // https://mvnrepository.com/artifact/org.mockito/mockito-core
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.5.13'
     testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.2'
 }
 
 test {
