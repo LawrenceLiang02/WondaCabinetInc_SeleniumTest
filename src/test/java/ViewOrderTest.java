@@ -174,14 +174,13 @@ public class ViewOrderTest {
         WebElement updateBtn = driver.findElement(By.xpath("//td[@name='update-orders']"));
         updateBtn.click();
 
-        WebElement statusField = driver.findElement(By.xpath("//input[@name='orderStatus']"));
-        statusField.clear();
-        statusField.sendKeys("In Progress");
+        Select statusField = new Select(driver.findElement(By.xpath("//select[@name='orderStatus']")));
+        statusField.selectByVisibleText("In Progress");
 
         WebElement submitBtn = driver.findElement(By.xpath("//button[@name='submit']"));
         submitBtn.click();
 
-        assertThat(driver.getCurrentUrl(), is("http://localhost:4200/update-orders/1"));
+        assertThat(driver.getCurrentUrl(), is("http://localhost:4200/update-orders/2"));
 
 
         try{
