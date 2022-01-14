@@ -17,6 +17,7 @@ import java.io.File;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.core.IsNot.not;
 
 @ExtendWith(SeleniumExtension.class)
 public class ViewOrderTest {
@@ -192,5 +193,61 @@ public class ViewOrderTest {
         driver.quit();
     }
 
+
+    @Test
+    @DisplayName("test_display_cancelled")
+    void test_display_cancelled(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200");
+        driver.manage().window().maximize();
+
+        String method = testInfo.getDisplayName();
+        createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
+
+        WebElement viewOrdersBtn = driver.findElement(By.xpath("//a[@name='view-orders']"));
+        viewOrdersBtn.click();
+
+        WebElement cancelledTab = driver.findElementById("mat-tab-label-0-1");
+        cancelledTab.click();
+        try{
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+        WebElement orderStatus = driver.findElement(By.xpath("//td[@name='orderStatus']"));
+
+        assertThat(orderStatus.getText(), is("Cancelled"));
+
+
+        driver.quit();
+    }
+
+    @Test
+    @DisplayName("test_active_cancelled")
+    void test_display_active(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200");
+        driver.manage().window().maximize();
+
+        String method = testInfo.getDisplayName();
+        createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
+
+        WebElement viewOrdersBtn = driver.findElement(By.xpath("//a[@name='view-orders']"));
+        viewOrdersBtn.click();
+
+        WebElement cancelledTab = driver.findElementById("mat-tab-label-0-0");
+        cancelledTab.click();
+        try{
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+        WebElement orderStatus = driver.findElement(By.xpath("//td[@name='orderStatus']"));
+
+        assertThat(orderStatus.getText(), not("Cancelled"));
+
+
+        driver.quit();
+    }
 
 }
