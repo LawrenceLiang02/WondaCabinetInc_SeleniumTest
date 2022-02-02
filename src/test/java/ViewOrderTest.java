@@ -41,6 +41,33 @@ public class ViewOrderTest {
         FileUtils.copyFile(srcFile, destFile);
     }
 
+    static String getAlphaNumericString(int n)
+    {
+
+        // chose a Character random from this String
+        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "0123456789"
+                + "abcdefghijklmnopqrstuvxyz";
+
+        // create StringBuffer size of AlphaNumericString
+        StringBuilder sb = new StringBuilder(n);
+
+        for (int i = 0; i < n; i++) {
+
+            // generate a random number between
+            // 0 to AlphaNumericString variable length
+            int index
+                    = (int)(AlphaNumericString.length()
+                    * Math.random());
+
+            // add Character one by one in end of sb
+            sb.append(AlphaNumericString
+                    .charAt(index));
+        }
+
+        return sb.toString();
+    }
+
     @Test
     @DisplayName("test_wci_logo")
     void test_wci_logo(TestInfo testInfo) throws Exception{
@@ -248,6 +275,264 @@ public class ViewOrderTest {
 
 
         driver.quit();
+    }
+
+    @Test
+    @DisplayName("test login")
+    void test_login(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200/login");
+        driver.manage().window().maximize();
+
+        String method = testInfo.getDisplayName();
+        createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
+
+        WebElement usernameFill = driver.findElement(By.xpath("//input[@name='username']"));
+        usernameFill.sendKeys("employeeadmin");
+
+        WebElement passwordFill = driver.findElement(By.xpath("//input[@name='password']"));
+        passwordFill.sendKeys("12345678");
+
+        WebElement submit = driver.findElement(By.xpath("//button[@name='submit']"));
+        submit.click();
+
+        try{
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    @DisplayName("test login no username")
+    void test_login_no_username(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200/login");
+        driver.manage().window().maximize();
+
+        String method = testInfo.getDisplayName();
+        createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
+
+        WebElement usernameFill = driver.findElement(By.xpath("//input[@name='username']"));
+        usernameFill.sendKeys("");
+
+        WebElement passwordFill = driver.findElement(By.xpath("//input[@name='password']"));
+        passwordFill.sendKeys("12345678");
+
+        WebElement submit = driver.findElement(By.xpath("//button[@name='submit']"));
+        submit.click();
+
+        try{
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    @DisplayName("test login no password")
+    void test_login_no_password(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200/login");
+        driver.manage().window().maximize();
+
+        String method = testInfo.getDisplayName();
+        createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
+
+        WebElement usernameFill = driver.findElement(By.xpath("//input[@name='username']"));
+        usernameFill.sendKeys("employeeadmin");
+
+        WebElement passwordFill = driver.findElement(By.xpath("//input[@name='password']"));
+        passwordFill.sendKeys("");
+
+        WebElement submit = driver.findElement(By.xpath("//button[@name='submit']"));
+        submit.click();
+
+        try{
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    @DisplayName("test login bad user")
+    void test_login_bad_user(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200/login");
+        driver.manage().window().maximize();
+
+        String method = testInfo.getDisplayName();
+        createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
+
+        WebElement usernameFill = driver.findElement(By.xpath("//input[@name='username']"));
+        usernameFill.sendKeys("baduser");
+
+        WebElement passwordFill = driver.findElement(By.xpath("//input[@name='password']"));
+        passwordFill.sendKeys("badpass");
+
+        WebElement submit = driver.findElement(By.xpath("//button[@name='submit']"));
+        submit.click();
+
+        try{
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    @DisplayName("test sign up")
+    void test_sign_up(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200/signup");
+        driver.manage().window().maximize();
+
+        String method = testInfo.getDisplayName();
+        createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
+
+        WebElement usernameFill = driver.findElement(By.xpath("//input[@name='username']"));
+        usernameFill.sendKeys(getAlphaNumericString(6));
+
+        WebElement emailFill = driver.findElement(By.xpath("//input[@name='email']"));
+        emailFill.sendKeys(getAlphaNumericString(5) + "@gmail.com");
+
+        WebElement passwordFill = driver.findElement(By.xpath("//input[@name='password']"));
+        passwordFill.sendKeys(getAlphaNumericString(6));
+
+        WebElement submit = driver.findElement(By.xpath("//button[@name='submit']"));
+        submit.click();
+
+        try{
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    @DisplayName("test sign up empty fields")
+    void test_sign_up_empty_fields(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200/signup");
+        driver.manage().window().maximize();
+
+        String method = testInfo.getDisplayName();
+        createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
+
+        WebElement usernameFill = driver.findElement(By.xpath("//input[@name='username']"));
+        usernameFill.sendKeys("");
+
+        WebElement emailFill = driver.findElement(By.xpath("//input[@name='email']"));
+        emailFill.sendKeys("");
+
+        WebElement passwordFill = driver.findElement(By.xpath("//input[@name='password']"));
+        passwordFill.sendKeys("");
+
+        WebElement submit = driver.findElement(By.xpath("//button[@name='submit']"));
+        submit.click();
+
+        try{
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    @DisplayName("test signup bad fields")
+    void test_sign_up_bad_fields(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200/signup");
+        driver.manage().window().maximize();
+
+        String method = testInfo.getDisplayName();
+        createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
+
+        WebElement usernameFill = driver.findElement(By.xpath("//input[@name='username']"));
+        usernameFill.sendKeys("a");
+
+        WebElement emailFill = driver.findElement(By.xpath("//input[@name='email']"));
+        emailFill.sendKeys( "notemail");
+
+        WebElement passwordFill = driver.findElement(By.xpath("//input[@name='password']"));
+        passwordFill.sendKeys("bad");
+
+        WebElement submit = driver.findElement(By.xpath("//button[@name='submit']"));
+        submit.click();
+
+        try{
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    @DisplayName("test signup taken username")
+    void test_sign_up_taken_username(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200/signup");
+        driver.manage().window().maximize();
+
+        String method = testInfo.getDisplayName();
+        createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
+
+        WebElement usernameFill = driver.findElement(By.xpath("//input[@name='username']"));
+        usernameFill.sendKeys("employeeadmin");
+
+        WebElement emailFill = driver.findElement(By.xpath("//input[@name='email']"));
+        emailFill.sendKeys(getAlphaNumericString(5) + "@gmail.com");
+
+        WebElement passwordFill = driver.findElement(By.xpath("//input[@name='password']"));
+        passwordFill.sendKeys(getAlphaNumericString(6));
+
+        WebElement submit = driver.findElement(By.xpath("//button[@name='submit']"));
+        submit.click();
+
+        try{
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    @DisplayName("test signup taken password")
+    void test_sign_up_taken_email(TestInfo testInfo) throws Exception{
+        driver.get("http://localhost:4200/signup");
+        driver.manage().window().maximize();
+
+        String method = testInfo.getDisplayName();
+        createSnapShot(driver,SCREENSHOTS + "\\" + method + "_" + System.currentTimeMillis() + ".png");
+
+        WebElement usernameFill = driver.findElement(By.xpath("//input[@name='username']"));
+        usernameFill.sendKeys(getAlphaNumericString(6));
+
+        WebElement emailFill = driver.findElement(By.xpath("//input[@name='email']"));
+        emailFill.sendKeys("vpopa18@gmail.com");
+
+        WebElement passwordFill = driver.findElement(By.xpath("//input[@name='password']"));
+        passwordFill.sendKeys(getAlphaNumericString(6));
+
+        WebElement submit = driver.findElement(By.xpath("//button[@name='submit']"));
+        submit.click();
+
+        try{
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
     }
 
 }

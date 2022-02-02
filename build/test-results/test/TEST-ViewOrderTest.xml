@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ViewOrderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-14T03:44:39" hostname="DESKTOP-HCTL2QM" time="7.956">
+<testsuite name="ViewOrderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-02T02:06:08" hostname="DESKTOP-8CT8SGU" time="7.079">
   <properties/>
-  <testcase name="test_active_cancelled" classname="ViewOrderTest" time="7.956"/>
-  <system-out><![CDATA[22:44:37.263 [Test worker] DEBUG io.github.bonigarcia.wdm.cache.ResolutionCache - Resolution chrome=97 in cache (valid until 23:30:02 13/01/2022 EST)
-22:44:37.273 [Test worker] DEBUG io.github.bonigarcia.wdm.cache.ResolutionCache - Resolution chrome97=97.0.4692.71 in cache (valid until 22:30:02 14/01/2022 EST)
-22:44:37.273 [Test worker] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 97.0.4692.71 (resolved driver for Chrome 97)
-22:44:37.294 [Test worker] DEBUG io.github.bonigarcia.wdm.WebDriverManager - Driver chromedriver 97.0.4692.71 found in cache
-22:44:37.296 [Test worker] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\kenny\.cache\selenium\chromedriver\win32\97.0.4692.71\chromedriver.exe
+  <testcase name="test login" classname="ViewOrderTest" time="7.079"/>
+  <system-out><![CDATA[21:06:06.540 [Test worker] DEBUG io.github.bonigarcia.wdm.cache.ResolutionCache - Resolution chrome=97 in cache (valid until 21:40:45 01/02/2022 EST)
+21:06:06.546 [Test worker] DEBUG io.github.bonigarcia.wdm.cache.ResolutionCache - Resolution chrome97=97.0.4692.71 in cache (valid until 20:40:45 02/02/2022 EST)
+21:06:06.546 [Test worker] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 97.0.4692.71 (resolved driver for Chrome 97)
+21:06:06.564 [Test worker] DEBUG io.github.bonigarcia.wdm.WebDriverManager - Driver chromedriver 97.0.4692.71 found in cache
+21:06:06.565 [Test worker] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\vpopa\.cache\selenium\chromedriver\win32\97.0.4692.71\chromedriver.exe
 ]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 97.0.4692.71 (adefa7837d02a07a604c1e6eff0b3a09422ab88d-refs/branch-heads/4692@{#1247}) on port 6755
+  <system-err><![CDATA[Starting ChromeDriver 97.0.4692.71 (adefa7837d02a07a604c1e6eff0b3a09422ab88d-refs/branch-heads/4692@{#1247}) on port 26740
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-Jan. 13, 2022 10:44:39 P.M. org.openqa.selenium.remote.ProtocolHandshake createSession
+Feb. 01, 2022 9:06:08 P.M. org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 ]]></system-err>
 </testsuite>
